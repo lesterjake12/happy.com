@@ -1,0 +1,103 @@
+body {
+  background: #f0f8ff; /* Light background color for a soft look */
+}
+
+.envelope {
+  position: relative;
+  width: 80%; /* Make the envelope larger */
+  max-width: 800px; /* Adjust maximum width */
+  background: #fff; /* Paper-like color */
+  border: 1px solid #ddd; /* Light border to mimic paper edges */
+  border-radius: 10px; /* Slightly rounded corners */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px; /* Increase padding for a larger envelope */
+  transition: transform 1s;
+  margin: 20px; /* Add margin to prevent edge clipping */
+}
+
+.envelope .line {
+  position: absolute;
+  top: 50%;
+  width: 90%; /* Make the line wider */
+  height: 2px;
+  background: #ddd; /* Color of the line */
+  transform: translateY(-50%);
+}
+
+.envelope .top, .envelope .bottom {
+  width: 100%;
+  background: inherit;
+  border-radius: 10px; /* Match the envelope's border radius */
+  transition: transform 1s;
+}
+
+.envelope .top {
+  height: 50%;
+  border-bottom: 1px solid #ddd; /* To mimic the flap */
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top;
+}
+
+.envelope .bottom {
+  height: 50%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform-origin: bottom;
+}
+
+.envelope.opened .top {
+  transform: translateY(-100%);
+}
+
+.envelope.opened .bottom {
+  transform: translateY(100%);
+}
+
+#content {
+  display: none;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  width: 100%;
+}
+
+#content.show {
+  opacity: 1;
+  display: block;
+}
+
+.open-btn, .close-btn {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  width: 60px; /* Larger button */
+  height: 60px; /* Larger button */
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px; /* Adjust font size */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.open-btn {
+  bottom: 20px; /* Positioned in the middle of the envelope */
+  background-color: #007bff; /* Primary button color */
+}
+
+.close-btn {
+  top: 20px; /* Positioned in the middle of the envelope */
+  background-color: #6c757d; /* Secondary button color */
+}
+
+.open-btn:hover, .close-btn:hover {
+  opacity: 0.8; /* Slightly transparent on hover */
+}

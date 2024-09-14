@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Custom styles for coffee theme background */
+        body {
+            background: linear-gradient(135deg, #6f4e37, #d2bba6); /* Coffee gradient background */
+            color: #333; /* Dark text for readability */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-attachment: fixed; /* Keep background fixed during scrolling */
+        }
+
+        .container {
+            background: #f9f3eb; /* Light cream color to contrast with coffee background */
+            border-radius: 12px; /* Rounded corners for a modern look */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+            padding: 2rem;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .card {
+            background: #f2e8d5; /* Light coffee color for the card */
+            border: none;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Shadow to lift the card */
+        }
+
+        h2 {
+            color: #6f4e37; /* Coffee brown color */
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #d2bba6; /* Light coffee border */
+            background: #fff; /* Clean background for input */
+        }
+
+        .btn-primary {
+            background-color: #6f4e37; /* Coffee brown color */
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #5c3a1e; /* Darker coffee brown */
+        }
+    </style>
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="card p-5">
+            <h2 class="mb-4">Enter Password</h2>
+            <input type="password" id="password" class="form-control mb-3" placeholder="Enter Password">
+            <button class="btn btn-primary" onclick="checkPassword()">Login</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // Prevent navigation using the browser's forward and backward buttons
+        window.onload = function () {
+            history.replaceState(null, null, location.href);
+            history.pushState(null, null, location.href);
+
+            window.onpopstate = function () {
+                history.replaceState(null, null, location.href); // Prevent navigation
+            };
+        };
+
+        // Function to check the login password
+        function checkPassword() {
+            const password = document.getElementById("password").value;
+            const correctPassword = "palagi"; // Set the password to "palagi"
+
+            if (password === correctPassword) {
+                // Show SweetAlert with the birthday message and animation
+                Swal.fire({
+                    title: 'Hello Langga!',
+                    text: 'HAPPY BIRTHDAY!',
+                    icon: 'success',
+                    showClass: {
+                        popup: 'animate__animated animate__bounceIn' // Animation for showing the popup
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp' // Animation for hiding the popup
+                    }
+                }).then(() => {
+                    // Redirect to the main page after the alert is closed
+                    window.location.href = "index.html";
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Wrong Password!'
+                });
+            }
+        }
+
+        // Add event listener for Enter key press
+        document.getElementById("password").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Prevent form submission
+                checkPassword(); // Call the checkPassword function
+            }
+        });
+    </script>
+    <!-- Add animate.css for additional animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</body>
+</html>

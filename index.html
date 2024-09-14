@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #d4a373;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .container {
+      position: relative;
+      width: 80vw;
+      height: 80vh;
+      margin: 0 auto;
+      background: #fff5e6;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: auto;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      background: #6f4e37;
+      padding: 10px 0;
+      margin: 0;
+      width: 100%;
+    }
+
+    .nav button {
+      background: #f5f5f5;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+      color: #333;
+    }
+
+    .nav button:hover {
+      background: #e0d5c1;
+      color: #000;
+    }
+
+    .section {
+      display: none;
+      padding: 20px;
+      color: #6f4e37;
+      width: 100%;
+      flex: 1;
+    }
+
+    .home {
+      text-align: center;
+    }
+
+    .pictures, .letters {
+      text-align: center;
+    }
+
+    .pictures {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pictures::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      background: red;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: floodHeart 3s infinite;
+      z-index: 1;
+    }
+
+    .pictures img, .pictures video {
+      width: 200px;
+      height: 150px;
+      object-fit: cover;
+      border: 5px solid #6f4e37;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .pictures img:hover, .pictures video:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+
+    .heart-animation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #fff;
+    }
+
+    .heart {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      background: red;
+      transform: rotate(-45deg);
+      margin: 0 auto;
+    }
+
+    .heart::before, .heart::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 150px;
+      height: 150px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      left: 75px;
+      transform: rotate(45deg);
+    }
+
+    .heart::after {
+      left: 0;
+      transform: rotate(45deg);
+    }
+
+    .heart-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .love-letter {
+      font-size: 18px;
+      line-height: 1.6;
+      text-align: left;
+      margin: 0 auto;
+      max-width: 800px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      overflow: hidden;
+    }
+
+    .logout-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 10px 20px;
+      background: #f44336;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 3;
+    }
+
+    .audio-player {
+      display: none;
+    }
+
+    @keyframes floodHeart {
+      0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0.5;
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0.5;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button class="logout-btn" onclick="window.location.href='login.html'">Log Out</button>
+    <div class="nav">
+      <button id="showHome">Home</button>
+      <button id="showPictures">Pictures</button>
+      <button id="showLetters">Letters</button>
+    </div>
+    <div class="section home" id="homeSection">
+      <h1>HAPPY BIRTHDAY!!</h1>
+      <p>Mao pani ma offer nako nimo kay wala pakoy ikabuhi nimo</p>
+    </div>
+    <div class="section pictures" id="picturesSection">
+      <img src="mp3/0aead3a5-8745-4535-9a37-e49370fa5ec7.jfif" alt="Picture 1">
+      <img src="mp3/3e802076-390b-4da6-8bc5-896e7d302426.jfif" alt="Picture 2">
+      <img src="mp3/6f8b035b-417e-4c38-8b52-ad5ba3bfdf96.jfif" alt="Picture 3">
+      <img src="mp3/7dd17757-35a5-4f43-a024-a7be08411037.jfif" alt="Picture 4">
+      <img src="mp3/51b66f9e-7161-40c9-a86f-67e937fb212b.jfif" alt="Picture 5">
+      <img src="mp3/36245fd7-3d1a-4681-bc11-366255917844.jfif" alt="Picture 6">
+      <img src="mp3/b02b2acf-b33b-47bd-af97-742b26c22f47.jfif" alt="Picture 7">
+      <video width="200" height="150" controls>
+        <source src="mp3/38310437-487a-4b91-8664-3e17353767f9.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="section heart-animation" id="heartSection">
+      <div class="heart">
+        <div class="heart-text">I LOVE YOU</div>
+      </div>
+    </div>
+    <div class="section letters" id="lettersSection">
+      <div class="love-letter">
+        <p>Hello my loveee,</p>
+        <p>Ready nakas pina ka OA na letter na nabuhat nako? okioki hahaha di unta ni nako ihatag nimo kay nakig buwag man ka nako pero okay naman ta run hahaha any ways mag sugud nakos pina ka o.a na letter hahaha</p>
+        <p>On this beautiful day, as we celebrate your birthday, I find myself overwhelmed with gratitude and love. From the moment I first laid eyes on you in church, my heart knew that you were someone extraordinary. You were my crush back in elementary school, a dream I cherished quietly, and now, seeing you here with me, it’s as if every piece of my heart has come home.</p>
+        <p>Your presence in my life is a gift I can never fully express in words. You have not only become the love of my life but have also guided me back to God, filling my days with a sense of purpose and serenity that I had lost. Your unwavering faith, kindness, and the way you see the world have inspired me to seek a deeper connection with our Creator, and for that, I am eternally grateful.</p>
+        <p>You have taught me the true meaning of love and devotion. Every moment spent with you is a cherished memory, and every day with you feels like a blessing. I look forward to the future we will build together, the adventures we will share, the dreams we will chase, and the love we will continue to nurture together.</p>
+        <p>Happy Birthday, my love. You are my everything, and I am so blessed to have you by my side.</p>
+        <p>With all my love,</p>
+        <p>I LOVE YOU SO MUCHHHH ENJOY YOUR DAY LANGGGAAA!!!!!!</p>
+      </div>
+    </div>
+  </div>
+
+  <audio class="audio-player" id="backgroundMusic">
+    <source src="mp3/PALAGI - TJxKZ Version  OFFICIAL LYRIC VIDEO.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(section => {
+        section.style.display = section.id === sectionId ? 'block' : 'none';
+      });
+
+      const audioPlayer = document.getElementById('backgroundMusic');
+      if (sectionId === 'lettersSection') {
+        audioPlayer.play();
+      } else {
+        audioPlayer.pause();
+        audioPlayer.currentTime = 0;
+      }
+    }
+
+    document.getElementById('showHome').addEventListener('click', function() {
+      showSection('homeSection');
+    });
+
+    document.getElementById('showPictures').addEventListener('click', function() {
+      showSection('picturesSection');
+    });
+
+    document.getElementById('showLetters').addEventListener('click', function() {
+      showSection('lettersSection');
+    });
+
+    showSection('homeSection');
+
+    window.onload = function () {
+      history.replaceState(null, null, location.href);
+      history.pushState(null, null, location.href);
+
+      window.onpopstate = function () {
+        history.replaceState(null, null, location.href);
+      };
+    };
+  </script>
+</body>
+</html>
